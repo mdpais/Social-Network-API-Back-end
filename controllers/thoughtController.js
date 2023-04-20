@@ -81,7 +81,7 @@ function deleteThought(req, res) {
 }
 
 // Add a reaction to a thought
-function addReaction(req, res) {
+function createReaction(req, res) {
   Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $push: { reactions: req.body } },
@@ -98,7 +98,7 @@ function addReaction(req, res) {
 }
 
 // Remove a reaction from a thought
-function removeReaction(req, res) {
+function deleteReaction(req, res) {
   Thought.findOneAndUpdate(
     { _id: req.params.thoughtId },
     { $pull: { reactions: {reactionId: req.params.reactionId } } },
@@ -120,6 +120,6 @@ module.exports = {
   getSingleThought,
   updateThought,
   deleteThought,
-  addReaction,
-  removeReaction
+  createReaction,
+  deleteReaction
 };
